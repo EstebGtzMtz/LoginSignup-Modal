@@ -8,7 +8,7 @@ const Form = () => {
 
   return (
     <FormContainer>
-        <form className='login-signup-form'>
+        <form className='login-signup-form' onSubmit={handleSumbit}>
             <div className='embed-submit-field'>
                 <input type="email" value={formInputsHandle.email} onChange={handleEmail}/>
             </div>
