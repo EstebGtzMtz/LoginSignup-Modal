@@ -6,14 +6,16 @@ const Form = () => {
 
   const {formInputsHandle, handleEmail, handlePassword, showPassword, setShowPassword, handleSumbit, isLogin} = useContext(LoginSignupContext);
 
+  const {email:{text: emailInput}, password:{text: passwordInput}}= formInputsHandle;
+
   return (
     <FormContainer>
       <form className='login-signup-form' onSubmit={handleSumbit}>
         <div className='embed-submit-field'>
-          <input type="email" value={formInputsHandle.email} onChange={handleEmail} placeholder='Tu correo electrónico'/>
+          <input type="email" value={emailInput} onChange={handleEmail} placeholder='Tu correo electrónico'/>
         </div>
         <div className='embed-submit-field'>
-          <input type={showPassword ? 'text' : 'password'} value={formInputsHandle.password} onChange={handlePassword} placeholder='Tu contraseña'/>
+          <input type={showPassword ? 'text' : 'password'} value={passwordInput} onChange={handlePassword} placeholder='Tu contraseña'/>
           <button 
             onClick={(e)=>{
               setShowPassword(!showPassword)

@@ -3,8 +3,21 @@ export interface ILoginSignupProviderProps {
 }
 
 export interface IForm{
-  email: string,
-  password: string
+  email: {
+    text: string,
+    errors?: boolean,
+    errorMessagge?: string
+  },
+  password: {
+    text: string,
+    errors?: boolean,
+    errorMessagge?: string
+  },
+  passwordConfirm?:{
+    text: string,
+    errors: boolean,
+    errorMessagge: string
+  }
 }
 
 export interface IShowModalProps{
