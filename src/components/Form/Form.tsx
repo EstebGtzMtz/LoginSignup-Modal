@@ -33,16 +33,16 @@ const Form = () => {
         {
           isLogin ? 
             <>
-              <a>¿Olvidaste tu contraseña?</a>
+              <a className='forgot-password'>¿Olvidaste tu contraseña?</a>
             </> : 
             <div className='privacy-and-terms'>
               <div className='content'>
                 Al crear una cuenta, estoy de acuerdo con las
-                <a href="https://ayudasegundamano.force.com/s/news/t-rminos-y-condiciones-de-pago-MCZ2NJJB2H2VAWFALJNH7DZPQ46U">
-                  {` Condiciones de uso`}
+                <a href="https://ayudasegundamano.force.com/s/news/t-rminos-y-condiciones-de-pago-MCZ2NJJB2H2VAWFALJNH7DZPQ46U" target='_blank'>
+                  {` Condiciones de uso `}
                 </a> 
-                {` y la `}
-                <a href="https://cool-puppy-873167.netlify.app/">Politica de privacidad</a>
+                {`y la `}
+                <a href="https://cool-puppy-873167.netlify.app/" target='_blank'>Politica de privacidad</a>
               </div>
             </div>
         }

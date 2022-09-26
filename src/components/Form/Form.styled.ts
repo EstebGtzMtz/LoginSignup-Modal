@@ -46,9 +46,9 @@ export const FormContainer = styled.div`
         display: flex;
         justify-content:center;
         font-size: 0.9rem;
-        margin: 1rem;
+        margin: 1rem 0;
         .content{
-            width: 77%;
+            width: 84%;
             a{
                 text-decoration: none;
                 color: #139490;
@@ -57,12 +57,12 @@ export const FormContainer = styled.div`
         }
     }
 
-    a{
+    .forgot-password{
         cursor: pointer;
         font-size: 0.9rem;
         color: #666;
         text-align: center;
-        margin-top: 1rem;
+        margin: 1rem 0;
         text-decoration: underline;
         
     }
