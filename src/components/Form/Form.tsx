@@ -1,35 +1,81 @@
 import { LoginSignupContext } from '../../Context/LoginSignupContext';
 import { FormContainer } from './Form.styled';
 import { useContext } from 'react';
+import {AiOutlineCheckCircle, AiFillCloseCircle} from 'react-icons/ai'
 
 const Form = () => {
 
-  const {formInputsHandle, handleEmail, handlePassword, showPassword, setShowPassword, handleSumbit, isLogin} = useContext(LoginSignupContext);
+  const {formInputsHandle, handleEmail, handlePassword, showPassword, setShowPassword, handleSumbit, isLogin, validateEmail, validatePassword, handlePasswordConfirmation,validatePasswordConfirm} = useContext(LoginSignupContext);
 
-  const {email:{text: emailInput}, password:{text: passwordInput}}= formInputsHandle;
+  const {
+    email:{text: emailInput, errors: emailError,errorMessagge }, 
+    password:{text: passwordInput, errors: passwordError, errorMessagge: passwordErrorMessagge}, 
+    passwordConfirm}= formInputsHandle;
 
   return (
     <FormContainer>
       <form className='login-signup-form' onSubmit={handleSumbit}>
         <div className='embed-submit-field'>
-          <input type="email" value={emailInput} onChange={handleEmail} placeholder='Tu correo electrónico'/>
+          <input type="email" value={emailInput} onChange={handleEmail} onBlur={validateEmail} placeholder='Tu correo electrónico'/>
+          {
+            emailError &&
+            <>
+              <div className='error-message-container'>
+                <div className='error-description'>
+                  {errorMessagge}
+                </div>
+              </div>
+              <AiFillCloseCircle className='error-icon'/>
+            </>
+          }
         </div>
+
         <div className='embed-submit-field'>
-          <input type={showPassword ? 'text' : 'password'} value={passwordInput} onChange={handlePassword} placeholder='Tu contraseña'/>
-          <button 
-            onClick={(e)=>{
-              setShowPassword(!showPassword)
-              e.preventDefault()
-            }}
-          >
-            {showPassword ? 'Ocultar' : 'Mostrar'}
-          </button>
+          <input type={showPassword ? 'text' : 'password'} value={passwordInput} onChange={handlePassword} onBlur={validatePassword} placeholder='Tu contraseña'/>
+          {
+            passwordError && !isLogin && 
+            <>
+              <div className='error-message-container'>
+                <div className='error-description'>
+                  {passwordErrorMessagge}
+                </div>
+              </div>
+              <AiFillCloseCircle className='error-icon'/>
+            </>
+          }
+          {
+            isLogin && 
+            <button 
+              onClick={(e)=>{
+                setShowPassword(!showPassword)
+                e.preventDefault()
+              }}
+            >
+              {showPassword ? 'Ocultar' : 'Mostrar'}
+            </button>
+          }
         </div>
-        <div>
-          <button onClick={handleSumbit} className='form-button'>
+        {
+          !isLogin &&
+          <div className='embed-submit-field'>
+            <input type="password" value={passwordConfirm?.text} onChange={handlePasswordConfirmation} onBlur={validatePasswordConfirm} placeholder='Repite Tu contraseña'/>
             {
-              isLogin ? 'Entra' : 'Crea una cuenta'
+              passwordConfirm?.errors && 
+              <>
+                <div className='error-message-container'>
+                  <div className='error-description'>
+                    {passwordConfirm?.errorMessagge}
+                  </div>
+                </div>
+                <AiFillCloseCircle className='error-icon'/>
+              </>
             }
+          </div>
+        }
+
+        <div>
+          <button disabled={emailError || passwordError } onClick={handleSumbit} className='form-button'>
+            Entra
           </button>
         </div>
         {

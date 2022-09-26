@@ -5,8 +5,8 @@ export interface ILoginSignupProviderProps {
 export interface IForm{
   email: {
     text: string,
-    errors?: boolean,
-    errorMessagge?: string
+    errors: boolean,
+    errorMessagge: string
   },
   password: {
     text: string,
@@ -14,7 +14,7 @@ export interface IForm{
     errorMessagge?: string
   },
   passwordConfirm?:{
-    text: string,
+    text: string | undefined
     errors: boolean,
     errorMessagge: string
   }

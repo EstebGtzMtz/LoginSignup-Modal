@@ -24,6 +24,13 @@ export const FormContainer = styled.div`
             cursor: pointer;
             color: #08646C;
         }
+        .error-icon{
+            position: absolute;
+            right: 4.625rem;
+            top: 1.4rem;
+            color: #CD6D6D;
+            width: 1.5rem;
+        }
     }
 
     .form-button{
@@ -65,5 +72,16 @@ export const FormContainer = styled.div`
         margin: 1rem 0;
         text-decoration: underline;
         
+    }
+
+    .error-message-container{
+        display: flex;
+        justify-content: center;
+        .error-description{
+            text-align: left;
+            width: 76%;
+            color: #CD6D6D;
+            font-size: 0.8rem;
+        }
     }
 `
