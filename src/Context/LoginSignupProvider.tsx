@@ -6,16 +6,18 @@ const LoginSignupProvider = ({children}:ILoginSignupProviderProps) => {
 
   const [show, setShow] = useState(false);
   const [formInputsHandle, setformInputsHandle] = useState<IForm>({email: '', password:''})
-  const [showPassword, setShowPassword] = useState(false)
+  const [showPassword, setShowPassword] = useState(false);
+  const [isLogin, setIsLogin] = useState(true)
 
-  const handleEmail = (e:any) => setformInputsHandle({...formInputsHandle, email: e.target.value});
+  const handleEmail = (e:React.ChangeEvent<HTMLInputElement>) => setformInputsHandle({...formInputsHandle, email: e.target.value});
+  const handlePassword = (e: React.ChangeEvent<HTMLInputElement>) => setformInputsHandle({...formInputsHandle, password: e.target.value})
 
-  const handlePassword = (e: any) => setformInputsHandle({...formInputsHandle, password: e.target.value})
-
-  const handleSumbit = (e:any) => {
+  const handleSumbit = (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     console.log(formInputsHandle)
   }
+
+  const changeFormAction = () => setIsLogin(!isLogin)
 
   return (
     <LoginSignupContext.Provider
@@ -28,7 +30,9 @@ const LoginSignupProvider = ({children}:ILoginSignupProviderProps) => {
       handlePassword,
       showPassword,
       setShowPassword,
-      handleSumbit
+      handleSumbit,
+      isLogin,
+      changeFormAction
     }}
     >
       {children}

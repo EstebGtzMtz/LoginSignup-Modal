@@ -1,7 +1,7 @@
 export interface ILoginSignupProviderProps {
   children: JSX.Element | JSX.Element[];
 }
- 
+
 export interface IForm{
   email: string,
   password: string

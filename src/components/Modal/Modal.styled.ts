@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const ModalContainer =  styled.div`
+    font-family: Helvetica;
     position: fixed;
     left: 0;
     top: 0;
@@ -11,16 +12,36 @@ export const ModalContainer =  styled.div`
     align-items:center;
     justify-content: center;
 
+    .modal-header{
+        margin: 2rem 1rem 0;
+    }
+
+
+    .modal-title{
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
     .modal-content{
         width:31.25rem;
         background-color: #fff;
-    }
-
-    .modal-header, .modal-footer{
-        padding: 0.625rem;
+        font-size:2rem;
     }
 
     .modal-body{
         padding: 0.625rem;
+    }
+
+    .modal-footer{
+        cursor: pointer;
+        padding: 1rem;
+        background-color: #18b9b4;
+        display: flex;
+        align-items: center;
+        justify-content:center;
+        a{
+            color: #fff;
+            font-size: 1rem;
+        }
     }
 `
