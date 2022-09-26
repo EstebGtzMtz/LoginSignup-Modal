@@ -5,7 +5,19 @@ import {AiOutlineCheckCircle, AiFillCloseCircle} from 'react-icons/ai'
 
 const Form = () => {
 
-  const {formInputsHandle, handleEmail, handlePassword, showPassword, setShowPassword, handleSumbit, isLogin, validateEmail, validatePassword, handlePasswordConfirmation,validatePasswordConfirm} = useContext(LoginSignupContext);
+  const {
+    formInputsHandle, 
+    handleEmail, 
+    handlePassword, 
+    showPassword, 
+    setShowPassword, 
+    handleSumbit, 
+    isLogin, 
+    validateEmail, 
+    validatePassword, 
+    handlePasswordConfirmation,
+    validatePasswordConfirm
+  } = useContext(LoginSignupContext);
 
   const {
     email:{text: emailInput, errors: emailError,errorMessagge }, 
@@ -58,7 +70,7 @@ const Form = () => {
         {
           !isLogin &&
           <div className='embed-submit-field'>
-            <input type="password" value={passwordConfirm?.text} onChange={handlePasswordConfirmation} onBlur={validatePasswordConfirm} placeholder='Repite Tu contraseña'/>
+            <input type="password" value={passwordConfirm?.text ? passwordConfirm?.text : ''} onChange={handlePasswordConfirmation} onBlur={validatePasswordConfirm} placeholder='Repite Tu contraseña'/>
             {
               passwordConfirm?.errors && 
               <>

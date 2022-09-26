@@ -9,7 +9,9 @@ function App() {
 
   return (
     <div>
-        <button onClick={()=> setShow(true)}>Show Modal</button>
+        <button onClick={()=> setShow(true)}>
+          Open Login/Signup Modal
+        </button>
         <Modal show={show} setShow={setShow}/>
     </div>
   )
